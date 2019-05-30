@@ -1,0 +1,32 @@
+{
+  "name": "segment-redis-proxy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:local": "if [ \"$(which nodemon)\" != \"\" ]; then nodemon --inspect src; else echo \"Install nodemon for auto-restarting: npm install -g nodemon\"; node --inspect src; fi",
+    "start": "node src",
+    "test": "jest ./test/"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "8.0.0",
+    "express": "^4.16.4",
+    "express-queue": "pmoleri/express-queue",
+    "helmet": "^3.16.0",
+    "morgan": "^1.9.1",
+    "redis": "^2.8.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "^5.14.1",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-import": "^2.16.0",
+    "jest": "^24.8.0",
+    "node-fetch": "^2.6.0",
+    "uuid": "^3.3.2"
+  }
+}

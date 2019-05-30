@@ -1,0 +1,28 @@
+{
+  "extends": [ "airbnb-base" ],
+  "parser": "babel-eslint",
+  "env": {
+    "es6": true
+  },
+  "rules": {
+    "array-callback-return": 1,
+    "arrow-body-style": [2, "as-needed"],
+    "brace-style": [2, "stroustrup"],
+    "eqeqeq": 2,
+    "import/exports-last": 2,
+    "import/prefer-default-export": 0,
+    "max-len": 0,
+    "no-async-promise-executor": 2,
+    "no-console": 0,
+    "no-continue": 0,
+    "no-misleading-character-class": 2,
+    "no-plusplus": 0,
+    "no-restricted-syntax": [0, "ForOfStatement"],
+    "no-self-assign": [2, { "props": true }],
+    "no-underscore-dangle": 0,
+    "no-useless-catch": 2,
+    "object-curly-newline": [2, { "ObjectPattern": { "multiline": true } }],
+    "require-atomic-updates": 2,
+    "semi": 2
+  }
+}
