@@ -10,7 +10,11 @@ By default, the applcation will connect to Redis on `127.0.0.1:6379` and listen 
 
 ## Testing
 
-To build and test, run `make test`. The `test` option will execute the application's unit tests and integration (black box) tests.
+This project currently contains two test variants: unit tests and integration tests.
+
+To build and run integration tests, run `make test`. This will start the proxy and a local redis instance and then execute the application's integration (black box) tests.
+
+To execute unit tests during development, run `npm run test`.
 
 Integration tests exist to verify the app's ability to retrieve values from Redis. The test app sets random key/value pairs directly using the redis client, and then does a lookup via the app's API. The integration testing is relatively minimal given the small exposure of the app (one endpoint) and the existence of comprehensive unit tests for the custom data structures and cache.
 
@@ -41,3 +45,7 @@ Application config is specified via an `.env` file. Support for all requested co
 ## Requirements
 
 All requirements listed in the spec have been implemented. Bonus requirement "parallel concurrent processing" has been implemented, however "Redis client protocol" has not. The code has been architectured with the "Redis client protocol" feature in mind and will be easy to extend.
+
+## Future Improvements
+
+In creating the integration tests, a copy of the Redis Client class had to be made in the `e2e` directory. This is due to the `src` directory being outside the context of the e2e Docker build. This solution is a hacky bandaid to the problem and should instead be implemented with a proper fix: either extracting `RedisClient.js` into a proper library, broadening the docker build context (by manual specifying the e2e Dockerfile) so that the file can be copied over at build time, or another approach.

@@ -6,7 +6,8 @@
   "scripts": {
     "start:local": "if [ \"$(which nodemon)\" != \"\" ]; then nodemon --inspect src; else echo \"Install nodemon for auto-restarting: npm install -g nodemon\"; node --inspect src; fi",
     "start": "node src",
-    "test": "jest ./test/"
+    "test": "jest ./test/",
+    "e2e": "jest ./e2e/"
   },
   "keywords": [],
   "author": "",

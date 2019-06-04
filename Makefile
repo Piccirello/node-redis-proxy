@@ -9,7 +9,4 @@ run:
 up: build run
 
 test: build
-	echo "Running unit tests"
-	docker run --rm --env-file .env -it piccirello/segment-redis-proxy /usr/src/app/node_modules/jest/bin/jest.js ./test/
-	echo "Running integration tests"
-	docker run --rm --env-file .env -it piccirello/segment-redis-proxy /usr/src/app/integration-tests/run.sh
+	docker-compose up --build --exit-code-from tests

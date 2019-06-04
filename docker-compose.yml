@@ -1,10 +1,25 @@
 version: '2.1'
 
 services:
+  redis:
+    image: redis
+    container_name: redis-instance-1
+    expose:
+      - 6379
   segment-redis-proxy:
     image: segment-redis-proxy
+    container_name: segment-redis-proxy
     build: .
     environment:
-      NODE_ENV: production
-    ports:
-      - 8080:8080
+      BACKING_REDIS_ADDRESS: redis-instance-1
+      BACKING_REDIS_PORT: 6379
+    expose:
+      - 8080
+  tests:
+    image: segment-redis-proxy-tests
+    build: ./e2e/
+    environment:
+      BACKING_REDIS_ADDRESS: redis-instance-1
+      BACKING_REDIS_PORT: 6379
+      HOST: segment-redis-proxy
+      PORT: 8080

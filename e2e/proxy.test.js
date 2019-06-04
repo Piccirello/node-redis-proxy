@@ -1,12 +1,13 @@
 require('dotenv').config();
 const fetch = require('node-fetch');
-const RedisClient = require('../src/RedisClient');
+const RedisClient = require('./RedisClient');
 const uuidv4 = require('uuid/v4');
 
-const port = process.env.PORT;
+const host = process.env.HOST || "localhost";
+const port = process.env.PORT || 8080;
 
 function getUrl(key) {
-  return `http://localhost:${port}/api/v1/cache/${key}`;
+  return `http://${host}:${port}/api/v1/cache/${key}`;
 }
 
 async function setValue(client, key, value) {
