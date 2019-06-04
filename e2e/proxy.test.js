@@ -6,6 +6,16 @@ const uuidv4 = require('uuid/v4');
 const host = process.env.HOST || "localhost";
 const port = process.env.PORT || 8080;
 
+const redisClient = new RedisClient(process.env.BACKING_REDIS_ADDRESS, process.env.BACKING_REDIS_PORT);;
+
+beforeEach(async () => {
+  await redisClient.init();
+})
+
+afterEach(async () => {
+  await redisClient.close();
+});
+
 function getUrl(key) {
   return `http://${host}:${port}/api/v1/cache/${key}`;
 }
@@ -28,9 +38,6 @@ async function deleteValue(key) {
 }
 
 test('set and get values', async () => {
-  const redisClient = new RedisClient(process.env.BACKING_REDIS_ADDRESS, process.env.BACKING_REDIS_PORT);
-  await redisClient.init();
-
   const key = uuidv4();
   const key2 = uuidv4();
 
