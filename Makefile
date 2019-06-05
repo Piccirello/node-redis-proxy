@@ -8,5 +8,5 @@ run:
 
 up: build run
 
-test: build
+test:
 	docker-compose up --build --exit-code-from tests
