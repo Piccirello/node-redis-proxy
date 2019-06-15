@@ -1,4 +1,4 @@
-# Redis Proxy
+# Node Redis Proxy
 
 This is a transparent Redis proxy written in ES6 JavaScript using Node.js. It provides an http interface for retrieving values from a single Redis instance. The proxy supports in-memory caching of retrieved values for a configurable duration. It also supports Least recently used (LRU) cache eviction in O(n) space and time complexity.
 
