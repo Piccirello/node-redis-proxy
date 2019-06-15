@@ -6,9 +6,9 @@ services:
     container_name: redis-instance-1
     expose:
       - 6379
-  segment-redis-proxy:
-    image: segment-redis-proxy
-    container_name: segment-redis-proxy
+  node-redis-proxy:
+    image: node-redis-proxy
+    container_name: node-redis-proxy
     build: .
     environment:
       BACKING_REDIS_ADDRESS: redis-instance-1
@@ -16,10 +16,10 @@ services:
     expose:
       - 8080
   tests:
-    image: segment-redis-proxy-tests
+    image: node-redis-proxy-tests
     build: ./e2e/
     environment:
       BACKING_REDIS_ADDRESS: redis-instance-1
       BACKING_REDIS_PORT: 6379
-      HOST: segment-redis-proxy
+      HOST: node-redis-proxy
       PORT: 8080

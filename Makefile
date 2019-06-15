@@ -1,10 +1,10 @@
 .PHONY: build run test
 
 build:
-	docker build -f Dockerfile -t piccirello/segment-redis-proxy .
+	docker build -f Dockerfile -t piccirello/node-redis-proxy .
 
 run:
-	docker run --rm -p 8080:8080 --env-file .env piccirello/segment-redis-proxy
+	docker run --rm -p 8080:8080 --env-file .env piccirello/node-redis-proxy
 
 up: build run
 

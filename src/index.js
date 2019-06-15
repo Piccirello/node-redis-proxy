@@ -6,7 +6,7 @@ const RedisClient = require('./RedisClient');
 const RedisProxy = require('./RedisProxy');
 const Cache = require('./Cache');
 
-const applicationName = 'Segment Redis Proxy';
+const applicationName = 'Node Redis Proxy';
 
 async function main() {
   console.log(`Starting ${applicationName}...`);
